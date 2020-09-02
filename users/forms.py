@@ -31,16 +31,16 @@ class SignUpForm(forms.ModelForm):
         model = models.User
         fields = ("first_name", "last_name", "email")
         widgets = {
-            "first_name": forms.TextInput(attrs={"placeholder": "First Name"}),
-            "last_name": forms.TextInput(attrs={"placeholder": "Last Name"}),
+            "first_name": forms.TextInput(attrs={"placeholder": "이름"}),
+            "last_name": forms.TextInput(attrs={"placeholder": "성"}),
             "email": forms.EmailInput(attrs={"placeholder": "Email"}),
         }
 
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={"placeholder": "Password"})
+        widget=forms.PasswordInput(attrs={"placeholder": "비밀번호"})
     )
     password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs={"placeholder": "Confirm Password"})
+        widget=forms.PasswordInput(attrs={"placeholder": "비밀번호 확인"})
     )
 
     def clean_email(self):

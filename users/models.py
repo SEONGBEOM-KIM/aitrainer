@@ -32,10 +32,6 @@ class User(AbstractUser):
     NUMBER_SIXTH = 6
 
     NUMBER_CHOICES = (
-        (NUMBER_FIRST, 1),
-        (NUMBER_SECOND, 2),
-        (NUMBER_THIRD, 3),
-        (NUMBER_FOURTH, 4),
         (NUMBER_FIFTH, 5),
         (NUMBER_SIXTH, 6),
     )
@@ -50,44 +46,44 @@ class User(AbstractUser):
         (LOGIN_KAKAO, "Kakao"),
     )
 
-    name = models.CharField(max_length=20, blank=True)
-    school = models.CharField(max_length=10, blank=True)
-    grade = models.IntegerField(choices=NUMBER_CHOICES, blank=True, null=True)
-    group = models.IntegerField(blank=True, null=True)
-    number = models.IntegerField(blank=True, null=True)
-    age = models.IntegerField(blank=True, null=True)
+    name = models.CharField(max_length=20, blank=True, verbose_name="이름")
+    school = models.CharField(max_length=10, blank=True, verbose_name="학교")
+    grade = models.IntegerField(choices=NUMBER_CHOICES, blank=True, null=True, verbose_name="학년")
+    group = models.IntegerField(blank=True, null=True, verbose_name="반")
+    number = models.IntegerField(blank=True, null=True, verbose_name="번호")
+    age = models.IntegerField(blank=True, null=True, verbose_name="나이")
     gender = models.CharField(
-        choices=GENDER_CHOICES, max_length=10, blank=True, null=True
+        choices=GENDER_CHOICES, max_length=10, blank=True, null=True, verbose_name="성별"
     )
-    teacher = models.BooleanField(default=False)
-    bio = models.TextField(blank=True, null=True)
-    email_verified = models.BooleanField(default=False)
-    email_secret = models.CharField(max_length=20, default="", blank=True)
+    teacher = models.BooleanField(default=False, verbose_name="교사 여부")
+    bio = models.TextField(blank=True, null=True, verbose_name="자기소개")
+    email_verified = models.BooleanField(default=False, verbose_name="Email 확인")
+    email_secret = models.CharField(max_length=20, default="", blank=True, verbose_name="Email Secret")
     login_method = models.CharField(
-        max_length=50, choices=LOGIN_CHOICES, default=LOGIN_EMAIL
+        max_length=50, choices=LOGIN_CHOICES, default=LOGIN_EMAIL, verbose_name="로그인 방법"
     )
 
     # PAPS Events
-    pacer = models.IntegerField(blank=True, null=True, default=0)
-    longTimeRun = models.IntegerField(blank=True, null=True, default=0)
-    stepTest = models.IntegerField(blank=True, null=True, default=0)
-    bendFoward = models.IntegerField(blank=True, null=True, default=0)
-    totalFlexibility = models.IntegerField(blank=True, null=True, default=0)
-    pushUp = models.IntegerField(blank=True, null=True, default=0)
-    sitUp = models.IntegerField(blank=True, null=True, default=0)
+    pacer = models.IntegerField(blank=True, null=True, default=0, verbose_name="왕복오래달리기")
+    longTimeRun = models.IntegerField(blank=True, null=True, default=0, verbose_name="오래달리기걷기")
+    stepTest = models.IntegerField(blank=True, null=True, default=0, verbose_name="스텝검사")
+    bendFoward = models.IntegerField(blank=True, null=True, default=0, verbose_name="앉아윗몸앞으로굽히기")
+    totalFlexibility = models.IntegerField(blank=True, null=True, default=0, verbose_name="종합유연성")
+    pushUp = models.IntegerField(blank=True, null=True, default=0, verbose_name="(무릎대고)팔굽혀펴기")
+    sitUp = models.IntegerField(blank=True, null=True, default=0, verbose_name="윗몸말아올리기")
     grip = models.DecimalField(
-        max_digits=5, decimal_places=2, blank=True, null=True, default=0
+        max_digits=5, decimal_places=2, blank=True, null=True, default=0, verbose_name="악력"
     )
     sprint = models.DecimalField(
-        max_digits=5, decimal_places=2, blank=True, null=True, default=0
+        max_digits=5, decimal_places=2, blank=True, null=True, default=0, verbose_name="50m달리기"
     )
     longJump = models.DecimalField(
-        max_digits=5, decimal_places=1, blank=True, null=True, default=0
+        max_digits=5, decimal_places=1, blank=True, null=True, default=0, verbose_name="제자리멀리뛰기"
     )
-    height = models.DecimalField(max_digits=5, decimal_places=1, default=0)
-    weight = models.DecimalField(max_digits=5, decimal_places=1, default=0)
+    height = models.DecimalField(max_digits=5, decimal_places=1, default=0, verbose_name="키")
+    weight = models.DecimalField(max_digits=5, decimal_places=1, default=0, verbose_name="몸무게")
     fat = models.DecimalField(
-        max_digits=5, decimal_places=1, blank=True, null=True, default=0
+        max_digits=5, decimal_places=1, blank=True, null=True, default=0, verbose_name="비만"
     )
 
     def endurance_point(self):
