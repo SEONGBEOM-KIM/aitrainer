@@ -11,6 +11,10 @@ django = "==2.2.5"
 pillow = "*"
 requests = "*"
 django-dotenv = "*"
+gunicorn = "*"
+dj-database-url = "*"
+psycopg2 = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.8"
